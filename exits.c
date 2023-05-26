@@ -1,4 +1,4 @@
-#include "shell.h"
+i#include "shell.h"
 
 /**
  **_strncpy - copies a string
@@ -29,6 +29,7 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 	return (s);
 }
+
 /**
  **_strncat - concatenates two strings
  *@dest: the first string
@@ -55,6 +56,7 @@ char *_strncat(char *dest, char *src, int n)
 		dest[i] = '\0';
 	return (s);
 }
+
 /**
  **_strchr - locates a character in a string
  *@s: the string to be parsed

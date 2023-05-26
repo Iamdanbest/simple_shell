@@ -16,6 +16,7 @@ char **get_environ(info_t *info)
 
 	return (info->environ);
 }
+
 /**
  * _unsetenv - Remove an environment variable
  * @info: Structure containing potential arguments. Used to maintain
@@ -28,7 +29,8 @@ int _unsetenv(info_t *info, char *var)
 	list_t *node = info->env;
 	size_t i = 0;
 	char *p;
-if (!node || !var)
+
+	if (!node || !var)
 		return (0);
 
 	while (node)
@@ -46,6 +48,7 @@ if (!node || !var)
 	}
 	return (info->env_changed);
 }
+
 /**
  * _setenv - Initialize a new environment variable,
  *             or modify an existing one
@@ -60,21 +63,23 @@ int _setenv(info_t *info, char *var, char *value)
 	char *buf = NULL;
 	list_t *node;
 	char *p;
-if (!var || !value)
+
+	if (!var || !value)
 		return (0);
-buf = malloc(_strlen(var) + _strlen(value) + 2);
+
+	buf = malloc(_strlen(var) + _strlen(value) + 2);
 	if (!buf)
-return (1);
+		return (1);
 	_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
 	node = info->env;
 	while (node)
 	{
-p = starts_with(node->str, var);
+		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-free(node->str);
+			free(node->str);
 			node->str = buf;
 			info->env_changed = 1;
 			return (0);

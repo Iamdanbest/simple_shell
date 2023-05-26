@@ -24,9 +24,10 @@ int _erratoi(char *s)
 		}
 		else
 			return (-1);
-}
+	}
 	return (result);
 }
+
 /**
  * print_error - prints an error message
  * @info: the parameter & return info struct
@@ -44,6 +45,7 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(estr);
 }
+
 /**
  * print_d - function prints a decimal (integer) number (base 10)
  * @input: the input
@@ -70,7 +72,7 @@ int print_d(int input, int fd)
 	current = _abs_;
 	for (i = 1000000000; i > 1; i /= 10)
 	{
-if (_abs_ / i)
+		if (_abs_ / i)
 		{
 			__putchar('0' + current / i);
 			count++;
@@ -79,13 +81,16 @@ if (_abs_ / i)
 	}
 	__putchar('0' + current);
 	count++;
-	return(count);
+
+	return (count);
 }
+
 /**
- * convert_number: converter function a clone of it
+ * convert_number - converter function, a clone of itoa
  * @num: number
  * @base: base
  * @flags: argument flags
+ *
  * Return: string
  */
 char *convert_number(long int num, int base, int flags)
@@ -95,12 +100,14 @@ char *convert_number(long int num, int base, int flags)
 	char sign = 0;
 	char *ptr;
 	unsigned long n = num;
-	if(!(flags & CONVERT_UNSIGNED)&& num < 0)
+
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
 	{
 		n = -num;
 		sign = '-';
-}
-array = flags & CONVERT_LOWERCASE ? "0123456789abcdef":"0123456789ABCDEF";
+
+	}
+	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
@@ -113,6 +120,7 @@ array = flags & CONVERT_LOWERCASE ? "0123456789abcdef":"0123456789ABCDEF";
 		*--ptr = sign;
 	return (ptr);
 }
+
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
